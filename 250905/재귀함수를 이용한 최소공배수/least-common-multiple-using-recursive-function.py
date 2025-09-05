@@ -14,9 +14,10 @@ tmp=0
 def find_abs(tmp_abs,i):
     global arr 
     global tmp 
-    #print(f"find_abs({i})")
-    if i==0:
-        return int(tmp)
+    #print(f"find_abs({tmp_abs,i})")
+    if i==-1:
+        return int(tmp) 
+    
     tmp=arr[i]*tmp_abs/find_gcd(arr[i],tmp_abs)
     return find_abs(tmp,i-1)
 
