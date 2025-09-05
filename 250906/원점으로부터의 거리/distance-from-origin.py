@@ -12,7 +12,7 @@ for i in range(1,n+1):
     x,y=tuple(map(int,input().split()))
     points.append(point(x,y,i))
 
-points.sort(key=lambda x:(abs(x.x+x.y),x.idx))
+points.sort(key=lambda x:(abs(x.x)+abs(x.y),x.idx))
 
 for i in points:
     print(i.idx)
