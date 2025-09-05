@@ -3,7 +3,7 @@ arr_31=[1,3,5,7,8,10,12]
 arr_30=[4,6,9,11]
 # Please write your code here.
 def check_yoonyear(Y):
-    if Y%4==0 Y%400==0:
+    if Y%4==0 and Y%400==0:
         return True
     if Y%4==0 and Y%100==0:
         return False 
