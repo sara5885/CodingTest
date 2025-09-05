@@ -1,6 +1,6 @@
 Y, M, D = map(int, input().split())
 arr_31=[1,3,5,7,8,10,12]
-arr_30=[4,6,8,11]
+arr_30=[4,6,9,11]
 # Please write your code here.
 def check_yoonyear(Y):
     if Y%4==0:
@@ -19,6 +19,8 @@ def check_date(Y,M,D):
                 return False 
     if M in arr_30 and D>30:
         return False 
+    if M in arr_31 and D>31:
+        return False 
     return True 
 def check_season(Y,M,D):
     if check_date(Y,M,D):
@@ -28,7 +30,7 @@ def check_season(Y,M,D):
             return "Summer"
         if M>=9 and M<=11:
             return "Fall"
-        if M>=12 or M<=2:
+        else:
             return "Winter"
     else:
         return -1 
