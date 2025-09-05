@@ -9,6 +9,7 @@ for i in str:
     for j in range(len(t)):
         if t[j]!=i[j]:
             is_in=False 
+            break
     if is_in:
         tmp_arr.append(i)
 
