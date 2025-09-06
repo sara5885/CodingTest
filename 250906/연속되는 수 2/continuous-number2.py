@@ -24,5 +24,5 @@ for i in range(n):
     elif i!=0:
         cnt+=1 
     # 매번 update 
-
+max_cnt=max(max_cnt,cnt)
 print(max_cnt)
