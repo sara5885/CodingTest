@@ -8,7 +8,7 @@ class engineer:
 
 for i in range(1,N+1):
     if i==P:
-        engineers.append(engineer(1,2))
+        engineers.append(engineer(1,K))
     else:
         engineers.append(engineer())
 
@@ -41,14 +41,14 @@ for handshake in handshakes:
             engineers[tmp_y].infect_num-=1
             # 감염시키기
             engineers[tmp_x].disease=1
-            engineers[tmp_x].infect_num=2
+            engineers[tmp_x].infect_num=K
 
     elif engineers[tmp_x].disease==1 and engineers[tmp_y].disease==0:
         # 감염횟수 차감 
         if engineers[tmp_x].infect_num>0:
             engineers[tmp_x].infect_num-=1
             engineers[tmp_y].disease=1
-            engineers[tmp_y].infect_num=2
+            engineers[tmp_y].infect_num=K
             
     # case 3 : 둘다 병 (횟수차감)
     elif engineers[tmp_x].disease==1 and engineers[tmp_y].disease==1:
