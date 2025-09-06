@@ -13,7 +13,7 @@ for i in range(1,n):
         cnt+=1
     else:
         max_cnt=max(max_cnt,cnt)
-        cnt=1
+        cnt=0
 
 max_cnt=max(max_cnt,cnt)
 
