@@ -9,6 +9,6 @@ for i in range(n):
     else:
         if cnt>max_cnt:
             max_cnt=cnt 
-            cnt=1
+            cnt=0
 
 print(max_cnt)
