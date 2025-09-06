@@ -45,7 +45,10 @@ for i in range(m):
             now_loc+=1
 #print(location_per_sec1)
 #print(location_per_sec2)
+ans=-1
 for i in range(1, min(len(location_per_sec1),len(location_per_sec2))):
     if location_per_sec1[i]==location_per_sec2[i]:
-        print(i)
+        ans=i
         break
+    
+print(ans)
