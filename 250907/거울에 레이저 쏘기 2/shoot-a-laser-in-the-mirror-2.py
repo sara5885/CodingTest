@@ -55,7 +55,7 @@ while True:
             # BEFORE (wrong answer)
             # now_dir=(now_dir+1)%4
             # AFTER 
-            now_dir=now_dir^1
+            now_dir^=1
     cnt+=1 
     # location update
     n_dx,n_dy=n_dx+dx[now_dir],n_dy+dy[now_dir]
