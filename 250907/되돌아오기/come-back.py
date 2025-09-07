@@ -22,5 +22,9 @@ for i in range(N):
             break
     if find_flag==True:
         break
+        
+if find_flag==False:
+    print(-1)
+else:
+    print(cnt)
 
-print(cnt)
