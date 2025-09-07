@@ -3,8 +3,6 @@ n = int(input())
 grid = [list(input()) for _ in range(n)]
 k = int(input())
 
-# \ : => , / : <= 
-
 # Down & \ : Right
 # Down & / : Left 
 # Right & \ : Down 
@@ -14,6 +12,16 @@ k = int(input())
 # Left & \ : Up
 # Left & / : Down 
 
+def in_range(x,y):
+    return x>=0 and x<n and y>=0 and y<n
+
+cnt=0
+dir={'D':0, 'L':1,'U':2, 'R':3 }
+dx,dy=[1,0,-1,0],[0,-1,0,1]
+
+# initialization 
+now_dir=(k-1)//(n-1) 
+n_dx,n_dy=(k-1)//(n-1), (k-1)%(n-1)
 # now_dir
 # (1,2,3):0, (4,5,6):1, (7,8,9):2, (10,11,12):3 
 # (k-1)//3
@@ -23,18 +31,10 @@ k = int(input())
 # 4:(1,0), 5(1,1), 6(1,2)
 # 7:(2,0), 8(2,1), 9(2,2)
 
-def in_range(x,y):
-    return x>=0 and x<n and y>=0 and y<n
-
-cnt=0
-dir={'D':0, 'L':1,'U':2, 'R':3 }
-dx,dy=[1,0,-1,0],[0,-1,0,1]
-# initialization 
-now_dir=(k-1)//3 
-n_dx,n_dy=(k-1)//3, (k-1)%3 
 
 while True:    
     # now grid (old dir -> new dir)
+    # print(n_dx,n_dy,now_dir)
     if grid[n_dx][n_dy]=='\\':
         now_dir=3-now_dir
     elif grid[n_dx][n_dy]=='/': 
