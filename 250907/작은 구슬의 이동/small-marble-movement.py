@@ -2,7 +2,8 @@ n, t = map(int, input().split())
 r, c, d = input().split()
 r, c = int(r), int(c)
 
-dir={'U':0,'D':3,'R':0,'L':2}
+# dir={'U':0,'D':3,'R':0,'L':2}
+dir={'D':0, 'R':1, 'L':2, 'U':3}
 # Please write your code here.
 dx,dy=[1,0,0,-1],[0,1,-1,0]
 # 0: (0,1), 1: (1,0), 2:(-1,0), 3:(0,-1)
