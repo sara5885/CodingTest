@@ -34,7 +34,7 @@ n_dx,n_dy=(k-1)//n, (k-1)%n
 
 while True:    
     # now grid (old dir -> new dir)
-    print(n_dx,n_dy,now_dir)
+    #print(n_dx,n_dy,now_dir)
     if grid[n_dx][n_dy]=='\\':
         now_dir=3-now_dir
     elif grid[n_dx][n_dy]=='/': 
