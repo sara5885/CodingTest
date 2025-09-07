@@ -51,8 +51,11 @@ while True:
     elif grid[n_dx][n_dy]=='/': 
         if now_dir%2==0: #0,2,4
             now_dir=(now_dir+3)%4
-        elif now_dir%2==1: #1,3 
-            now_dir=(now_dir+1)%4
+        elif now_dir%2==1: #
+            # BEFORE (wrong answer)
+            # now_dir=(now_dir+1)%4
+            # AFTER 
+            now_dir=now_dir^1
     cnt+=1 
     # location update
     n_dx,n_dy=n_dx+dx[now_dir],n_dy+dy[now_dir]
