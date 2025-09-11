@@ -12,6 +12,7 @@ dx,dy=[0,1,0,-1],[1,0,-1,0]
 idx=0
 nx,ny=0,0
 # ord('A'),ord('Z')+1
+
 alpha='A'
 for i in range(n*m):
     # tmp=chr(i)
@@ -21,7 +22,10 @@ for i in range(n*m):
         idx=(idx+1)%4
     
     nx,ny=nx+dx[idx],ny+dy[idx]
-    alpha=chr(ord(alpha)+1)
+    if alpha=='Z':
+        alpha='A'
+    else:
+        alpha=chr(ord(alpha)+1)
 
 # print(arr)
 for row in arr:
