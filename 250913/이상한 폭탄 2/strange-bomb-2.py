@@ -9,8 +9,8 @@ for i in range(N):
         if num[i]==num[j] and abs(i-j)<=K:
             bomb_arr.append(num[i])
 
-bomb_arr=bomb_arr[::-1]
+bomb_arr.sort()
 if len(bomb_arr)==0:
     print(-1)
 else:
-    print(bomb_arr[0])
+    print(bomb_arr[-1])
