@@ -30,9 +30,11 @@ for i in range(1,M+1): # each cheeze
                 # 치즈후보임 
                 # print(f"치즈후보 : (i,sick_p[j],m[k]):({i},{sick_p[j]},{m[k]})")
                 sick_cnt+=1 
+                break
             # else:
             #     break
     # 진짜 후보 (조건 만족) => 이 치즈 먹은 사람 다 찾기 
+    # 중복 발생 
     if sick_cnt==S:
         # print('상한치즈 후보:',i)
         people=[0]*(N+1)
