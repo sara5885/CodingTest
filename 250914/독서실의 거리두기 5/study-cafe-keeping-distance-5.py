@@ -7,7 +7,6 @@ for i in range(len(seat)):
     if seat[i]!=0:
         continue 
     seat[i]=1 
-    print('i, seat:',i,seat)
     # 가장 가까운 거리 계산 
     tmp_dist=30
     cnt=1
