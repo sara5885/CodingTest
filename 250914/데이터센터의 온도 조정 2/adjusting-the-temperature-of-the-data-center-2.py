@@ -9,9 +9,9 @@ for i in range(0,1001):
         temp_a,temp_b=ranges[j]
         if i<temp_a:
             tmp_work+=C
-        elif i>=temp_a and i<temp_b:
+        elif i>=temp_a and i<=temp_b:
             tmp_work+=G
-        else:
+        elif i>temp_b:
             tmp_work+=H 
     max_work=max(tmp_work,max_work)
 
