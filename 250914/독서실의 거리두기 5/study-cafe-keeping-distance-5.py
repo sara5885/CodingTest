@@ -7,28 +7,29 @@ for i in range(len(seat)):
     if seat[i]!=0:
         continue 
     seat[i]=1 
+    # print('i, seat:',i,seat)
     # 가장 가까운 거리 계산 
     tmp_dist=30
     cnt=1
 
     if seat[0]==1:
-        flag_1=True 
+        first_flag_1=True 
     else:
-        flag_1=False 
+        first_flag_1=False 
 
     for j in range(1, len(seat)):
+        # if i==11:
+        #     print('[tmp_dist,j]:',tmp_dist,j)
         if seat[j]==1: #원래 cnt 있으면 update해주고 다시 초기화 
-            if flag_1==True:
-                tmp_dist=1
-                continue 
+            if first_flag_1==True:
+                tmp_dist=min(tmp_dist,cnt)
             else:
-                tmp_dist=min(cnt,tmp_dist)
+                first_flag_1=True
             cnt=1
-            flag_1=True 
         # else : 0이니까 마저 count 
         else :
-            flag_1=False 
             cnt+=1 
+    # print(f"{i}번째 tmp_dist:{tmp_dist}")
 
     max_diff=max(max_diff,tmp_dist)
     seat[i]=0
