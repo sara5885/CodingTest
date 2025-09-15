@@ -1,4 +1,4 @@
-# 250915 (12:47)
+# 250915 (12:47) (13:14)
 from collections import deque 
 n, k = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
@@ -28,9 +28,6 @@ for i in range(k):
             if visited[a][b]==1:
                 total_visited[a][b]=1
 
-        for b in range(n+1):
-            if visited[a][b]==1:
-                total_visited[a][b]=1
 
 tmp_sum=0
 for col in total_visited:
