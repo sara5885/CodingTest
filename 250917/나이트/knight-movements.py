@@ -21,7 +21,10 @@ def bfs():
 
 bfs()
 
-if step[r2-1][c2-1]==0:
+# 이런경우도 생각해야하나
+if r1==r2 and c1==c2 :
+    print(0)
+elif step[r2-1][c2-1]==0:
     print(-1)
 else:
     print(step[r2-1][c2-1])
