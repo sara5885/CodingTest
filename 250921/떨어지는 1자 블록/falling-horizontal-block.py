@@ -7,6 +7,8 @@ for i in range(k-1,k+m-1):
 row_idx=0
 while True :
     # 더이상 내려갈 곳 없으면 break
+    if n==1:
+        break
     check_flag=True 
     for i in range(k-1,k+m-1):
         # grid[0][1] -> grid[1][1]
