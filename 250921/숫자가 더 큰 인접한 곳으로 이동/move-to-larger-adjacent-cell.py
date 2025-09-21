@@ -16,8 +16,8 @@ while True:
         changed=False 
         for i in range(4):
             tmp_r,tmp_c=n_r+dx[i], n_c+dy[i]
-            print('DEBUGGING:',r,c,tmp_r,tmp_c, a[tmp_r][tmp_c])
-            if 0<=tmp_r<n and 0<=tmp_c<n and a[tmp_r][tmp_c]>a[r][c]:
+            # print('DEBUGGING:',r,c,tmp_r,tmp_c, a[tmp_r][tmp_c])
+            if 0<=tmp_r<n and 0<=tmp_c<n and a[tmp_r][tmp_c]>a[n_r][n_c]:
                 
                 n_r,n_c=tmp_r,tmp_c
                 changed=True 
