@@ -1,4 +1,4 @@
-# 250921 (23:35)
+# 250921 (23:35) 
 n, m, k = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 for i in range(k-1,k+m-1):
@@ -11,7 +11,7 @@ while True :
     for i in range(k-1,k+m-1):
         # grid[0][1] -> grid[1][1]
         # grid[0][2]-> grid[1][2] 
-        if grid[row_idx+1][i]!=0:
+        if row_idx+1<n and grid[row_idx+1][i]!=0:
             check_flag=False 
             break 
     if check_flag==True:
