@@ -7,13 +7,13 @@ for i in range(k-1,k+m-1):
 row_idx=0
 while True :
     # 더이상 내려갈 곳 없으면 break
-    if n==1:
+    if row_idx==n-1: #######여기 오류 
         break
     check_flag=True 
     for i in range(k-1,k+m-1):
         # grid[0][1] -> grid[1][1]
         # grid[0][2]-> grid[1][2] 
-        if row_idx+1<n and grid[row_idx+1][i]!=0:
+        if grid[row_idx+1][i]!=0:
             check_flag=False 
             break 
     if check_flag==True:
