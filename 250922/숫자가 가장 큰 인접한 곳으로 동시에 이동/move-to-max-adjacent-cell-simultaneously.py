@@ -32,13 +32,20 @@ for sec in range(t):
                             tmp_max=a[tmp_x][tmp_y]
                             tmp_max_x=tmp_x
                             tmp_max_y=tmp_y
-         
-                if new_grid[tmp_max_x][tmp_max_y]==1:
-                    new_grid[tmp_max_x][tmp_max_y]=0
-                else:
-                    new_grid[tmp_max_x][tmp_max_y]=1
+                # 이동하는 도중에는 충돌 xxxxx => 마지막에 한번에 처리해줘야 함. 
+                # if new_grid[tmp_max_x][tmp_max_y]==1:
+                #     new_grid[tmp_max_x][tmp_max_y]=0
+                # else:
+                #     new_grid[tmp_max_x][tmp_max_y]=1
+                if tmp_max_x!=-1:
+                    new_grid[tmp_max_x][tmp_max_y]+=1
                             
-    grid=[r[:] for r in new_grid]
+    # grid=[r[:] for r in new_grid]
+    grid=[[0]*n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if new_grid[i][j]==1:
+                grid[i][j]=1
 
 ans=0
 for row in grid:
