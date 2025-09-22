@@ -1,12 +1,11 @@
-# 250922 (15:01)
+# 250922 (15:01) (15:12)
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
 dx,dy=[-1,1,0,0,-1,-1,1,1],[0,0,-1,1,-1,1,-1,1]
 for t in range(m):# turn
     value=1 
-    while value<=16:
-        
+    while value<=n*n:
         for i in range(n):
             for j in range(n):
                 if grid[i][j]!=value:
@@ -26,6 +25,7 @@ for t in range(m):# turn
                     grid[tmp_max_r][tmp_max_c]=grid[i][j]
                     grid[i][j]=tmp_max
                 value+=1
+        # print(grid)
 
 
 for row in grid:
