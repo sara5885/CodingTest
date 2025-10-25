@@ -2,7 +2,7 @@ from collections import deque
 n, k = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 points = [tuple(map(int, input().split())) for _ in range(k)]
-
+visited=[[0]*n for _ in range(n)]
 # Please write your code here.
 ans=[[0]*n for _ in range(n)]
 
@@ -22,10 +22,11 @@ def bfs(x,y):
 
 for x,y in points:
     x,y=x-1,y-1
-    visited=[[0]*n for _ in range(n)]
-    visited[x][y]=1 
-    ans[x][y]=1 
-    bfs(x,y)
+    # visited=[[0]*n for _ in range(n)]
+    if not visited[x][y]:
+        visited[x][y]=1 
+        ans[x][y]=1 
+        bfs(x,y)
 
 cnt=0
 
