@@ -3,7 +3,7 @@ n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 visited=[[0]*m for _ in range(n)]
 # 조건 + grid[x][y]>K 
-safe_k,safe_cnt =0,0
+safe_k,safe_cnt =1,0
 
 max_k=1
 for i in range(n):
