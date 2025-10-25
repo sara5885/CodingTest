@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(100010)
 n = int(input())
 edges = [tuple(map(int, input().split())) for _ in range(n - 1)]
 graph=[[] for _ in range(n+1)]
