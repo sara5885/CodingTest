@@ -2,16 +2,20 @@
 n = int(input())
 edges = [tuple(map(int, input().split())) for _ in range(n - 1)]
 parent_arr=[0]*(n+1)
-grid=[[0]*(n+1) for _ in range(n+1)]
+# grid=[[0]*(n+1) for _ in range(n+1)]
+graph=[[] for _ in range(n+1)]
 visited=[0]*(n+1)
+
 for i,j in edges:
-    grid[i][j]=1 
-    grid[j][i]=1 
+    graph[i].append(j)
+    graph[j].append(i)
+    # grid[i][j]=1 
+    # grid[j][i]=1 
 
 def dfs(node):
     visited[node]=1
     for i in range(n+1):
-        if not visited[i] and grid[node][i]:
+        if not visited[i] and i in graph[node]:
             parent_arr[i]=node 
             visited[i]=1 
             dfs(i)
