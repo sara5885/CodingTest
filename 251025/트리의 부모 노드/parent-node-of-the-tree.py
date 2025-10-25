@@ -14,8 +14,8 @@ for i,j in edges:
 
 def dfs(node):
     visited[node]=1
-    for i in range(n+1):
-        if not visited[i] and i in graph[node]:
+    for i in graph[node]:
+        if not visited[i]:
             parent_arr[i]=node 
             visited[i]=1 
             dfs(i)
