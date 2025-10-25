@@ -1,4 +1,6 @@
 # 251025 (13:20)
+import sys
+sys.setrecursionlimit(5000)
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 visited=[[0]*m for _ in range(n)]
