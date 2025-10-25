@@ -5,11 +5,11 @@ visited=[[0]*m for _ in range(n)]
 # 조건 + grid[x][y]>K 
 safe_k,safe_cnt =1,0
 
-max_k=1
-for i in range(n):
-    for j in range(m):
-        if grid[i][j]>max_k:
-            max_k=grid[i][j]
+# max_k=1
+# for i in range(n):
+#     for j in range(m):
+#         if grid[i][j]>max_k:
+#             max_k=grid[i][j]
 
 # 안전영역 하나에 대한 것
 def dfs(k,x,y):
@@ -22,7 +22,8 @@ def dfs(k,x,y):
     return 1 
 
 
-for k in range(1,max_k):
+# for k in range(1,max_k):
+for k in range(1,100):
     # 비 높이 k 일 때 안전영역개수 
     visited=[[0]*m for _ in range(n)]
     tmp_cnt=0
