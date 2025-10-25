@@ -5,7 +5,7 @@ visited=[[0]*m for _ in range(n)]
 # 조건 + grid[x][y]>K 
 safe_k,safe_cnt =0,0
 
-max_k=0
+max_k=1
 for i in range(n):
     for j in range(m):
         if grid[i][j]>max_k:
