@@ -1,5 +1,7 @@
 #251016 (14:00)
 # total_depth_sum 누적 합 : dfs 안에서 leaf node인 경우 더하기 
+import sys 
+sys.setrecursionlimit(1000000)
 n = int(input())
 edges = [tuple(map(int, input().split())) for _ in range(n - 1)]
 graph=[[] for _ in range(n+1)]
