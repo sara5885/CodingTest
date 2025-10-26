@@ -22,8 +22,11 @@ def dfs(node):
             visited[child]=1 # 중복 
             graph_arr[child]=0 
             dfs(child)
-graph[parent[remove_node]]
+# graph[parent[remove_node]].remove(remove_node)
+
 dfs(remove_node)
+if graph[parent[remove_node]] and remove_node in graph[parent[remove_node]]:
+    graph[parent[remove_node]].remove(remove_node)
 # print(graph_arr)
 # print(graph)
 cnt=0
