@@ -1,59 +1,51 @@
-# 250923 (01:00)
+# 251026 (16:08)
+import itertools 
+import copy 
 from collections import deque 
 n, k, m = map(int, input().split())
 
 grid = [list(map(int, input().split())) for _ in range(n)]
 
-s_pos=[] #what's this 
-
-for _ in range(k):
-    r, c = tuple(map(int, input().split()))
-    s_pos.append((r - 1, c - 1))
-
-
-stone_pos=[]
+r = []
+c = [] 
+all_stones=[]
 for i in range(n):
     for j in range(n):
         if grid[i][j]==1:
-            stone_pos.append([i,j])
+            all_stones.append((i,j))
+for _ in range(k):
+    ri, ci = map(int, input().split())
+    r.append(ri - 1)
+    c.append(ci - 1)
 
-selected_stones=[]
+# r,c array에서 k개 뽑는 조합 
+stone_comb=itertools.combinations(all_stones,m)
 
-# for dfs 
-q=deque() # global variable 
-# q에는 x,y 좌표가 들어감 
-
-visited=[[0]*n for _ in range(n)]
-max_cnt=0
-
-def in_range(x,y):
-    return 0<=x<n and 0<=y<n 
-def can_go(x,y):
-    return in_ranage(x,y) and not a[x][y] and visited[x][y]==0 
-dx,dy=[-1,1,0,0],[0,0,-1,1]
-def bfs():
+def bfs(tmp_map,visited, r,c):
+    visited[r][c]=1 
+    q=deque()
+    q.append((r,c))
     while q:
-        x,y=q.popleft()
-        for i in range(4):
-            tmp_x,tmp_y=x+dx[i],y+dy[i]
-            if can_go(tmp_x,tmp_y):
-                q.append(tmp_x,tmp_y)
-                visited[tmp_x][tmp_y]=1 
+        cx,cy=q.popleft()
+        for dx,dy in ((1,0),(0,1),(-1,0),(0,-1)):
+            nx,ny=cx+dx,cy+dy 
+            if 0<=nx<n and 0<=ny<n and not visited[nx][ny] and not tmp_map[nx][ny]:
+                visited[nx][ny]=1 
+                q.append((nx,ny))
+max_cnt=0
+for i in stone_comb:
+    cnt=0
+    visited=[[0 for _ in range(n)] for _ in range(n)]
+    tmp_map=copy.deepcopy(grid)
+    for x,y in i:
+        tmp_map[x][y]=0
+    for idx in range(len(r)):
+        bfs(tmp_map,visited,r[idx],c[idx])
+    for row in visited:
+        cnt+=sum(row)
+    # print(visited)
+    # print(tmp_map)
+    # print(cnt)
+    max_cnt=max(cnt,max_cnt)
 
-def calc():
-
-
-# backtracking 
-def find_max(idx,cnt):
-    global ans 
-    if idx==len(stone_pos):
-        if cnt==m:
-            ans=max(ans,calc())
-        return 
-    selected_stones.append(stone_pos[idx])
-
-
-
-
-find_max(0,0)
-print(ans)
+print(max_cnt)
