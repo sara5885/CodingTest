@@ -27,10 +27,10 @@ def union(x,y):
     b_p=find(b)
     if a_p<=b_p:
         arr[b_p]=a_p 
-        _=find(b)
+        # _=find(b)
     else:
         arr[a_p]=b_p 
-        _=find(a)
+        # _=find(a)
 
 for i in range(m):
     if len(operations[i])==2:
