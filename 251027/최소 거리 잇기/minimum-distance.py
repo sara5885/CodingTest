@@ -1,4 +1,4 @@
-#251027 (16:00)
+#251027 (16:00) (16:)
 import math 
 n, m = map(int, input().split())
 
@@ -15,7 +15,7 @@ edges = [tuple(map(int, input().split())) for _ in range(m)]
 # print(edges)
 # print(x)
 # print(y)
-edges_cnt=len(edges)
+edges_cnt=0
 dist_sum=0
 def find(x):
     global arr 
@@ -40,19 +40,20 @@ def dist(a,b):
     bx,by=float(x[b]),float(y[b])
     return math.sqrt((ax-bx)**2+(ay-by)**2)
 
+add_edges=[]
+
 for a,b in edges:
     a_p,b_p=find(a),find(b)
     if a_p==b_p:
         continue 
     union(a,b)
-    # edges_cnt+=1 
-    # dist_sum+=dist(a,b)
+    edges_cnt+=1 
+    
 
 # connecting 
-add_edges=[]
 for i in range(1,len(x)-1):
     for j in range(i+1,len(x)):
-        if (i,j) not in edges:
+        if (i,j) not in edges and (j,i) not in edges:
             add_edges.append((i,j,dist(i,j)))
 add_edges.sort(key=lambda x : x[-1])
 
