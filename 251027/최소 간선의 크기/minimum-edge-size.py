@@ -30,17 +30,16 @@ def union(a,b):
 
 for i in range(m):
     s,e,w=edges[i]
+    if find(a)==find(b):
+        break
     if edge_cnt==n+1:
         break
     if find(s)==find(e):
-        break
+        continue 
     union(s,e)
-    print(s,e, find(s),find(e))
-    print(arr)
+
     edge_cnt+=1 
     satis.append(w)
 
-print(edges)
-print(satis)
 satis.sort()
 print(satis[0])
