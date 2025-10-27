@@ -16,4 +16,4 @@ def square(n):
     memo[n]=square(n-1)+square(n-2)
     return memo[n]
 
-print(square(n))
+print(square(n)%10007)
