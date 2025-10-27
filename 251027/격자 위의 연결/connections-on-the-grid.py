@@ -37,7 +37,7 @@ def find(x,y):
         return x,y 
     tmp_x,tmp_y=grid[x][y]
     root_x,root_y=find(tmp_x,tmp_y)
-    grid[x][y]=(root_x,root_x)
+    grid[x][y]=(root_x,root_y)
     return root_x,root_y
 
 def union(ax,ay,bx,by):
@@ -66,4 +66,5 @@ for a,b,w in edges:
 #     for col in row:
 #         print(col,end=" ")
 #     print()
+# print(edges)
 print(weight_sum)
