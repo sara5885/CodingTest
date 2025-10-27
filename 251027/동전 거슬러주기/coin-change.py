@@ -7,7 +7,8 @@ coin = list(map(int, input().split()))
 # 최소동전수 
 dp=[INT_MAX]*(N+1)
 for i in range(M):
-    dp[coin[i]]=1
+    if coin[i]<=N:
+        dp[coin[i]]=1
 for i in range(1,N+1):
     for j in range(M):
         if i>coin[j]:
