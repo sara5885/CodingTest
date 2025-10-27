@@ -31,7 +31,7 @@ for a,b in edges:
 
 parent=set()
 for i in range(1,n+1):
-    parent.add(arr[i])
+    parent.add(find(i))
 
 x,y=parent
 print(min(x,y),max(x,y))
