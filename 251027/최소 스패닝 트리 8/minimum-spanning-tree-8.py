@@ -9,8 +9,9 @@ dist=[INT_MAX]*(n+1)
 graph=[[0]*(n+1) for _ in range(n+1)]
 
 for x,y,w in edges:
-    graph[x][y]=w
-    graph[y][x]=w 
+    if graph[x][y]==0 or graph[x][y]>w:
+        graph[x][y]=w
+        graph[y][x]=w 
 
 dist[1]=0
 ans=0
