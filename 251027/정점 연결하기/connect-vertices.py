@@ -21,8 +21,10 @@ def union(a,b):
         return 
     elif a_p<b_p:
         arr[b_p]=a_p
+        _=find(b_p)
     else:
         arr[a_p]=b_p
+        _=find(a_p)
 for a,b in edges:
     union(a,b)
 
