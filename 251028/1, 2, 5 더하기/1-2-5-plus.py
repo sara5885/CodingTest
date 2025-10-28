@@ -17,6 +17,6 @@ dp[0]=1
 for i in range(1,n+1):
     for j in range(len(A)):
         if i>=A[j]:
-            dp[i]+=dp[i-A[j]]%10007
+            dp[i]+=dp[i-A[j]]
 
-print(dp[n])
+print(dp[n]%10007)
