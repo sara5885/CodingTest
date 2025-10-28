@@ -5,7 +5,7 @@ dp=[101]*(m+1)
 dp[0]=0 
 for i in range(n):
     for j in range(m,-1,-1):
-        if dp[j-A[i]]!=101:
+        if j>=A[i] and dp[j-A[i]]!=101:
             dp[j]=min(dp[j], dp[j-A[i]]+1)
 
 if dp[m]==101:
