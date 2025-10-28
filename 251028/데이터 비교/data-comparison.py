@@ -5,8 +5,8 @@ arr1 = list(map(int, input().split()))
 m = int(input())
 arr2 = list(map(int, input().split()))
 
-# set1=set(arr1)
-# set2=set(arr2)
+set1=set(arr1)
+set2=set(arr2)
 
 # same_flag=True 
 # for x in set1:
@@ -20,7 +20,7 @@ arr2 = list(map(int, input().split()))
     
 
 for x in arr2:
-    if x in arr1:
+    if x in set1:
         print(1,end=" ")
     else:
         print(0,end=" ")
