@@ -12,6 +12,8 @@ arr.sort(key=lambda x: -x[0])
 j_idx=0
 value=0
 while m>0:
+    if not 0<=j_idx<n:
+        break
     j_num=arr[j_idx][1]
     j_price=v[j_num]
     j_weight=w[j_num]
