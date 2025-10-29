@@ -4,7 +4,7 @@ arr = [int(input()) for _ in range(n)]
 
 # 같은 크기의 정수 k 를 m개 만들기 
 arr.sort()
-right=arr[0]
+right=arr[-1]
 left=1 
 
 ans=0
