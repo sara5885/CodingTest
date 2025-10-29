@@ -1,12 +1,15 @@
-# 251029 (15:51)
-import sys 
+import sys
+INT_MAX=sys.maxsize 
 n = int(input())
 a = list(map(int, input().split()))
 
-current_sum=a[0]
-max_sum=a[0]
-for i in range(1,n) :
-    current_sum=max(current_sum+a[i],a[i])
-    max_sum=max(current_sum,max_sum)
+ans=-INT_MAX
+current_sum=0
+for i in a:
+    if current_sum+i <0:
+        current_sum=i  #그냥 a부터 다시 초기화 
+    else:
+        current_sum+=i 
+    ans=max(ans, current_sum)
 
-print(max_sum)
+print(ans)
