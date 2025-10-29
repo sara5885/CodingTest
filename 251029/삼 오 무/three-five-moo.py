@@ -8,15 +8,14 @@ def count_num(x):
 
 left=1
 right=1000000000
-mid=0
+min_idx=1000000000
+
 while left<=right: 
     mid=(left+right)//2 
     # print(mid,count_num(mid))
-    if count_num(mid)==n:
-        break
-    elif count_num(mid)<n:
-        left=mid+1 
+    if count_num(mid)>=n:
+        min_idx=min(min_idx,mid)
+        right=mid-1
     else:
-        right=mid-1 
-
-print(mid)
+        left=mid+1 
+print(min_idx)
