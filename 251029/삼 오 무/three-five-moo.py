@@ -1,5 +1,6 @@
-# 251029 (14:31)
-
+# 251029 (14:31) (15:34)
+import sys 
+INT_MAX=sys.maxsize 
 n = int(input())
 
 def count_num(x):
@@ -7,8 +8,8 @@ def count_num(x):
     return x-moo 
 
 left=1
-right=1000000000
-min_idx=1000000000
+right=INT_MAX
+min_idx=INT_MAX
 
 while left<=right: 
     mid=(left+right)//2 
