@@ -1,8 +1,9 @@
 #251029 (18:22)
 from sortedcontainers import SortedSet 
 T = int(input())
-s=SortedSet()
+
 for _ in range(T):
+    s=SortedSet()
     k = int(input())
     operations = [tuple(input().split()) for _ in range(k)]
     command = [op[0] for op in operations]
