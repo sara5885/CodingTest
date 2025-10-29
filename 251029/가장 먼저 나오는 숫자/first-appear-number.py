@@ -15,7 +15,7 @@ for q in query:
             lower_idx=min(lower_idx,mid)
         else:
             left=mid+1 
-    if arr[lower_idx]!=q:
+    if lower_idx==n or arr[lower_idx]!=q:
         print(-1)
     else:
         print(lower_idx+1)
