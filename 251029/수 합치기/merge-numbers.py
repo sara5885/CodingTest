@@ -7,9 +7,10 @@ while len(arr)>1:
     arr.sort()
     min1=arr[0]
     min2=arr[1]
+    # print(min1,min2)
     total_cost+=(min1+min2)
     arr.append(min1+min2)
     del arr[0]
-    del arr[1]
+    del arr[0]
 
 print(total_cost)
