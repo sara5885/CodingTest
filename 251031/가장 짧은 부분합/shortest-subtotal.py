@@ -11,8 +11,11 @@ for i in range(n-1):
         break
     for j in range(i+1,n):
         tmp_sum+=arr[j]
+        if j-i+1 > min_dist:
+            break
         if tmp_sum>=s:
             min_dist=min(min_dist,j-i+1)
             break 
+        
 
 print(min_dist)
