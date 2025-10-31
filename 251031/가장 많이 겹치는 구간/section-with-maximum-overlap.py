@@ -13,9 +13,10 @@ for s,e in intervals:
     if e>max_idx:
         max_idx=e 
 
-ans=0
+cnt=sum(arr[:min_idx])
+ans=cnt 
 for i in range(min_idx,max_idx+1):
-    cnt=sum(arr[:i])
+    cnt=cnt+arr[i]
     if cnt>ans:
         ans=cnt 
 print(ans)
