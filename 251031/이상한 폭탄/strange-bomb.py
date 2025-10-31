@@ -10,7 +10,7 @@ for i in range(n-1,-1,-1):
         R[i]=-1 
     else:
         R[i]=latest_idx[arr[i]]
-        latest_idx[arr[i]]=i 
+    latest_idx[arr[i]]=i 
 
 ans=-1 
 for i in range(n):
