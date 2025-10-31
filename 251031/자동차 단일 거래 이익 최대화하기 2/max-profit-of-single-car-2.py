@@ -2,9 +2,15 @@
 n = int(input())
 price = list(map(int, input().split()))
 
-max_diff=0
-for i in range(n-1):
-    for j in range(i+1,n):
-        if price[j]-price[i]>0:
-            max_diff=max(max_diff,price[j]-price[i])
-print(max_diff)
+min_price=price[0]
+max_profit=0
+
+for i in range(1,n):
+    if min_price>price[i]:
+        min_price=price[i]
+    else:
+        profit=price[i]-min_price
+        if profit>max_profit:
+            max_profit=profit 
+
+print(max_profit)
