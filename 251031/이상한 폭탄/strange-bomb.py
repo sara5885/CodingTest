@@ -7,4 +7,7 @@ for i in range(0,n-k):
     if arr[i]==arr[i+k]:
         for j in range(i,i+k+1):
             num.add(arr[j])
-print(num[-1])
+if len(num)==0:
+    print(-1)
+else:
+    print(num[-1])
