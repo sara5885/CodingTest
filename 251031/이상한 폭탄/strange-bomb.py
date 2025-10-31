@@ -1,13 +1,20 @@
-# 251031 (16:18)
-from sortedcontainers import SortedSet 
 n, k = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
-num=SortedSet()
-for i in range(0,n-k):
-    if arr[i]==arr[i+k]:
-        for j in range(i,i+k+1):
-            num.add(arr[j])
-if len(num)==0:
-    print(-1)
-else:
-    print(num[-1])
+
+# Please write your code here.
+R=[0]*n 
+# dict에 값 저장 ?
+latest_idx=dict()
+for i in range(n-1,-1,-1):
+    if arr[i] not in latest_idx:
+        R[i]=-1 
+    else:
+        R[i]=latest_idx[arr[i]]
+        latest_idx[arr[i]]=i 
+
+ans=-1 
+for i in range(n):
+    if R[i]!=-1 and R[i]-i<=k:
+        ans=max(ans,arr[i])
+
+print(ans )
