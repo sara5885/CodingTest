@@ -11,7 +11,7 @@ for i in range(n-1,-1,-1):
         R[i]=latest_idx[arr[i]]
     latest_idx[arr[i]]=i 
 
-max_num=0
+max_num=-1
 for i in range(n):
     
     if R[i]!=-1 and R[i]-i<=k:
