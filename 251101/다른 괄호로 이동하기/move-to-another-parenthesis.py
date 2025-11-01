@@ -5,7 +5,7 @@ INT_MAX=sys.maxsize
 n, a, b = map(int, input().split())
 grid = [list(input().strip()) for _ in range(n)]
 
-ans=-1
+ans=0
 def dijkstra(x,y): #i,j가 start node이고 모든 node에 대해 거리 
     dist=[[INT_MAX for _ in range(n+1)] for _ in range(n+1)]
     dist[x][y]=0
@@ -24,7 +24,7 @@ def dijkstra(x,y): #i,j가 start node이고 모든 node에 대해 거리
                 if tmp_dist<dist[nx][ny]:
                     dist[nx][ny]=tmp_dist 
                     heapq.heappush(pq,(tmp_dist,(nx,ny)))
-    max_dist=-1
+    max_dist=0
     for i in range(1,n+1):
         for j in range(1,n+1):
             if (i,j)==(x,y): continue 
