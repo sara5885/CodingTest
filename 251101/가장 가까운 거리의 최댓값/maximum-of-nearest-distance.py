@@ -11,10 +11,9 @@ for x,y,w in edges:
     graph[x].append((y,w))
     graph[y].append((x,w))
 
+all_dists={}
 ans=-1
-for i in range(1,n+1):
-    if i==a or i==b or i==c:
-        continue 
+for i in (a,b,c):
     dist_i=[INT_MAX]*(n+1)
     dist_i[i]=0
     pq=[]
@@ -28,13 +27,21 @@ for i in range(1,n+1):
             if tmp_dist<dist_i[v]:
                 dist_i[v]=tmp_dist 
                 heapq.heappush(pq,(tmp_dist,v))
-    min_in_i=INT_MAX 
+    all_dists[i]=dist_i
+ans=-1 
+for i in range(1,n+1):
+    if i in (a,b,c): continue 
+    dist_to_a = all_dists[a][i]
+    dist_to_b = all_dists[b][i]
+    dist_to_c = all_dists[c][i]
 
-    for j in (a,b,c):
-        min_in_i=min(min_in_i,dist_i[j])
-    # print(i, dist_i)
-    # print(min_in_i)
-    if min_in_i>ans:
-        ans=min_in_i
+    min_dist_to_abc = min(dist_to_a, dist_to_b, dist_to_c)
+    
+    # (예외 처리: a,b,c와 연결되지 않은 노드는 무시)
+    if min_dist_to_abc == INT_MAX:
+        continue
 
+    # "가장 짧은 거리"가 최대가 되는 노드를 찾음
+    if min_dist_to_abc > ans:
+        ans = min_dist_to_abc
 print(ans)
