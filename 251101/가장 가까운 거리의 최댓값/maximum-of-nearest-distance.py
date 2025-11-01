@@ -10,6 +10,7 @@ graph=[[] for _ in range(n+1)]
 for x,y,w in edges:
     graph[x].append((y,w))
     graph[y].append((x,w))
+
 ans=-1
 for i in range(1,n+1):
     if i==a or i==b or i==c:
@@ -28,9 +29,8 @@ for i in range(1,n+1):
                 dist_i[v]=tmp_dist 
                 heapq.heappush(pq,(tmp_dist,v))
     min_in_i=INT_MAX 
-    for j in range(1,n+1):
-        if j==i: continue 
-        if j not in (a,b,c): continue
+
+    for j in (a,b,c):
         min_in_i=min(min_in_i,dist_i[j])
     # print(i, dist_i)
     # print(min_in_i)
