@@ -12,7 +12,7 @@ max_gold=0
 
 for x in range(n):
     for y in range(n):
-        for k in range(n):
+        for k in range(2*n-1):
             tmp_gold=0
             val=0
             for i in range(-k,k+1): #(-2,-1,0,1,2)
