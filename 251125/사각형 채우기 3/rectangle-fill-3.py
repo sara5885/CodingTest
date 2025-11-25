@@ -14,6 +14,6 @@ if n==1:
 elif n>1:
     dp[2]=7
     for i in range(3,n+1):
-        dp[i]=(3*dp[n-1]+dp[n-2]-dp[n-3]+mod)%mod
+        dp[i]=(3*dp[i-1]+dp[i-2]-dp[i-3]+mod)%mod
 
     print(dp[n])
