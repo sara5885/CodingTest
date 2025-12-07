@@ -1,0 +1,30 @@
+#251207 (14:23)
+n = int(input())
+l, m, r = [], [], []
+grid=[[0 for _ in range(3)] for _ in range(n)]
+dp=[[0 for _ in range(3)] for _ in range(n)]
+for i in range(n):
+    left, mid, right = map(int, input().split())
+    l.append(left)
+    m.append(mid)
+    r.append(right)
+    grid[i][0]=left
+    grid[i][1]=mid
+    grid[i][2]=right
+
+for j in range(3):
+    dp[0][j]=grid[0][j]
+
+for i in range(1,n):
+    for j in range(3):
+        # dp[i][j]
+        for k in range(3):
+            if j==k: continue 
+            dp[i][j]=max(dp[i-1][k]+grid[i][j],dp[i][j])
+
+ans=0
+for j in range(3):
+    ans=max(ans, dp[n-1][j])
+print(ans)
+
+
