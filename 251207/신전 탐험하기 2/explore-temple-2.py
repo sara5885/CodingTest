@@ -22,7 +22,7 @@ for i in range(1,n):
             if j==k: continue 
             if i==n-1 and j==dp[i-1][k][1]: continue 
             if dp[i-1][k][0]+grid[i][j]>dp[i][j][0]:
-                dp[i][j]=[dp[i-1][k][0]+grid[i][j],k]
+                dp[i][j]=[dp[i-1][k][0]+grid[i][j],dp[i-1][k][1]]
             # dp[i][j]=max(dp[i-1][k]+grid[i][j],dp[i][j])
 
 ans=0
