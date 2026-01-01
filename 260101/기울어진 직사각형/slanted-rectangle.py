@@ -1,27 +1,29 @@
-# 251121 (11:26)
-
 n = int(input())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
-
-dx,dy=[-1,-1,1,1],[1,-1,-1,1]
-# if out ouf index -> idx+=1 
-
-idx=0
+# Please write your code here.
 ans=0
+dx=[-1,-1,1,1]
+dy=[1,-1,-1,1]
+def get_score(i,j,h,w):
+    # start idx : i,j
+    score=0
+    move_cnt=[h,w,h,w]
+    cx,cy=i,j
+    # 순서대로 이동 
+    for dir in range(4): #
+        len=move_cnt[dir]
+        for _ in range(len): # h or w 길이만큼 
+            nx,ny=cx+dx[dir], cy+dy[dir]
+            if not (0<=nx<n and 0<=ny<n):
+                return -1 
+            score+=grid[nx][ny]
+            cx,cy=nx,ny
+    return score 
+
 for i in range(n):
     for j in range(n):
-        tmp=grid[i][j]
-        cx,cy=i,j 
-        for dx,dy in ((-1,1),(-1,-1),(1,-1),(1,1)):
-            nx,ny=cx+dx, cy+dy 
-            if (nx,ny)==(i,j):
-                continue
-            while 0<=nx<n and 0<=ny<n :
-                if i==2 and j==1:
-                    print(grid[nx][ny],end=" ")
-                tmp+=grid[nx][ny]
-                nx,ny=nx+dx,ny+dy 
-        ans=max(ans,tmp)
-
+        for h in range(1,n):
+            for w in range(1,n):
+                ans=max(ans,get_score(i,j,h,w))
 print(ans)
