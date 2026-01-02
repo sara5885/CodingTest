@@ -13,16 +13,27 @@ ans=INT_MIN
 #     if i2<i<=i2+h2 and j2<j<=j2+w2: return True 
 #     return False
 
+# def overlap(i, j, h, w, i2, j2, h2, w2):
+#     # 세로(행) 구간이 겹치는지 확인
+#     # "내 시작점이 쟤 끝점보다 작고" AND "쟤 시작점이 내 끝점보다 작아야" 함
+#     vertical_overlap = (i < i2 + h2) and (i2 < i + h)
+    
+#     # 가로(열) 구간이 겹치는지 확인
+#     horizontal_overlap = (j < j2 + w2) and (j2 < j + w)
+    
+#     # 둘 다 겹쳐야 진짜 겹친 것
+#     return vertical_overlap and horizontal_overlap
+
 def overlap(i, j, h, w, i2, j2, h2, w2):
-    # 세로(행) 구간이 겹치는지 확인
-    # "내 시작점이 쟤 끝점보다 작고" AND "쟤 시작점이 내 끝점보다 작아야" 함
-    vertical_overlap = (i < i2 + h2) and (i2 < i + h)
-    
-    # 가로(열) 구간이 겹치는지 확인
-    horizontal_overlap = (j < j2 + w2) and (j2 < j + w)
-    
-    # 둘 다 겹쳐야 진짜 겹친 것
-    return vertical_overlap and horizontal_overlap
+    visited=[[0 for _ in range(m)] for _ in range(n)]
+    for x in range(i,i+h):
+        for y in range(j,j+w):
+            visited[x][y]+=1 
+    for x in range(i2,i2+h2):
+        for y in range(j2,j2+w2):
+            visited[x][y]+=1
+            if visited[x][y]>=2: return True 
+    return False 
 
 def get_score(i,j,h,w,i2,j2,h2,w2):
     score=0
