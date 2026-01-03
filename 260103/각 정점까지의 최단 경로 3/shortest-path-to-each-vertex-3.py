@@ -1,0 +1,35 @@
+import sys 
+import heapq
+
+INT_MAX=sys.maxsize 
+n, m = map(int, input().split())
+edges = [tuple(map(int, input().split())) for _ in range(m)]
+graph=[[0]*(n+1) for _ in range(n+1)]
+pq=[]
+visited=[0]*(n+1)
+
+dist=[INT_MAX]*(n+1)
+
+for i in range(m):
+    x,y,z=edges[i]
+    graph[x][y]=z 
+
+dist[1]=0
+
+for i in range(1,n+1):
+    # v개 정점 중 아직 방문하지 않은 정점 중 dist값이 가장 작은 정점 찾기
+    min_idx=-1
+    for j in range(1,n+1):
+        if visited[j]:
+            continue 
+        if min_idx==-1 or dist[min_idx]>dist[j]:
+            min_idx=j 
+    visited[min_idx]=True 
+
+    for j in range(1,n+1): # 다시 모든 node 확인 
+        if graph[min_idx][j]==0:
+            continue 
+        dist[j]=min(dist[j], dist[min_idx]+graph[min_idx][j])
+
+for i in range(2,n+1):
+    print(dist[i])
