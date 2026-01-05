@@ -16,6 +16,7 @@ max_node, max_dist=0,0
 def dfs(node, dist):
     global max_node, max_dist 
     global visited 
+    visited[node]=1 #이거 안하면 값 이상해짐 
     if max_dist<dist :
         max_dist=dist 
         max_node=node 
