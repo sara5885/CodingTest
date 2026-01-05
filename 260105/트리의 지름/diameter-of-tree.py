@@ -26,6 +26,10 @@ def dfs(node, dist):
     return max_dist,max_node
 
 s_dist, s_node = dfs(1,0)
+
+# 이 때 max_node, max_dist, visited 초기화해줘야 함 \
+max_node, max_dist =0,0
+visited=[0]*(n+1)
 ans,_=dfs(s_node,0)
 
 print(ans)
