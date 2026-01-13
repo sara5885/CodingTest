@@ -1,5 +1,7 @@
 # 260106 (21:07)
 # 260112 (12:06)
+import sys 
+sys.setrecursionlimit(10**6)
 
 n = int(input())
 parent = list(map(int, input().split()))
@@ -18,6 +20,13 @@ for i in range(n):
 
 # for i in graph:
 #     print(i)
+if k==root_num:
+    print(0)
+    sys.exit()
+else:
+    p=parent[k]
+    graph[p].remove(k)
+
 removed_node[k]=1 
 
 def count_leaf(node):
