@@ -38,6 +38,7 @@ def bfs():
                 pq.append(i)
         
 bfs()
+
 # for node,i in depth.items():
 #     print(node, i)
 
@@ -46,7 +47,12 @@ bfs()
 ans=0
 # t_depth=depth[k]
 for key,value in depth.items():
-    if value==depth[k] and parent[key]!=parent[k]:
-        ans+=1
+    if key == k or key == root:
+            continue
+    if key in parent and parent[key] in parent:
+        if value==depth[k] and parent[parent[key]]==parent[parent[k]] and parent[key]!=parent[k]:
+            ans+=1
+        # print(k)
+        # print(value, depth[k], parent[key], parent[k])
 
 print(ans)
