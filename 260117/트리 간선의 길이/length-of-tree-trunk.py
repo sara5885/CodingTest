@@ -5,7 +5,7 @@ from collections import deque
 n = int(input())
 edges = [tuple(map(int, input().split())) for _ in range(n - 1)]
 
-graph=[[] for _ in range(n+1)]
+graph=[[] for _ in range(10001)]
 for i,j, w in edges:
     graph[i].append((j,w))
     graph[j].append((i,w))
@@ -13,8 +13,8 @@ for i,j, w in edges:
 ans=0
 
 def compute_dist(i,j):
-    visited=[0]*(n+1)
-    dist=[0]*(n+1)
+    visited=[0]*(10001)
+    dist=[0]*(10001)
     visited[i]=1
     pq=deque([i])
     while pq:
@@ -26,12 +26,13 @@ def compute_dist(i,j):
                 pq.append(child)
                 dist[child]=dist[node]+weight
 
-    return INT_MAX
+    return -1 
         
 
 for i in range(1,n):
     for j in range(i+1,n+1):
         dist=compute_dist(i,j)
-        ans=max(ans,dist)
+        if dist!=-1:
+            ans=max(ans,dist)
 
 print(ans)
