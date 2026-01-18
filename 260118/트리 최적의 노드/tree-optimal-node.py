@@ -14,21 +14,24 @@ for i, j in edges:
     graph[i].append(j)
     graph[j].append(i)
 
-ans =INT_MAX
-for i in range(1,n+1):
-    pq=deque([i])
+def bfs(node):
+    pq=deque([node])
     visited=[0]*(n+1)
+    visited[node]=1 
+    m_dist, m_node=0,0
     dist=[0]*(n+1)
-    c_max_dist=0
     while pq:
-        node=pq.popleft()
-        for child in graph[node]:
+        c_node=pq.popleft()
+        for child in graph[c_node]:
             if not visited[child]:
                 visited[child]=1
                 pq.append(child)
-                dist[child]=dist[node]+1
-                c_max_dist=max(c_max_dist, dist[child])
-    ans=min(ans,c_max_dist)
+                dist[child]=dist[c_node]+1
+                if dist[child]>m_dist:
+                    m_dist=dist[child]
+                    m_node=child 
+    return m_node, m_dist 
 
-
-print(ans)
+num,_= bfs(1)
+_,dist=bfs(num)
+print((dist+1)//2)
