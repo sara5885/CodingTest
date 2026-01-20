@@ -28,7 +28,14 @@ def bfs(node):
 
     return max_num, max_dist, dist
 
-t_num, _, _=bfs(1)
-_,_,dist_arr=bfs(t_num)
-dist_arr.sort()
-print(dist_arr[-2])
+t_num, _,_=bfs(1)
+t2_num,_,dist_arr1=bfs(t_num)
+_,_,dist_arr2=bfs(t2_num)
+dist_arr=dist_arr1.copy()
+for i in range(1,n+1):
+    if i!=t_num:
+        dist_arr.append(dist_arr2[i])
+
+dist_arr.sort(reverse=True)
+print(dist_arr[1])
+# print(dist_arr)
