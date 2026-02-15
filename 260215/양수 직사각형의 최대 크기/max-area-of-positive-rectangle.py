@@ -41,7 +41,9 @@ for sx in range(n):
 # print(fsx,fsy)
 # print(fh,fw)
 # print(max_value)
-print(max_size)
+if max_value==0:
+    print(-1)
+else: print(max_size)
 
                         
 
