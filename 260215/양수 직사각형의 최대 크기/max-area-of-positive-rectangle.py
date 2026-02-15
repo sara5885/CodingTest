@@ -20,7 +20,7 @@ for sx in range(n):
                 # print(sx,sx+h,sy,sy+w)
                 for i in range(sx,sx+h):
                     for j in range(sy,sy+w):    
-                        if grid[i][j]<0:
+                        if grid[i][j]<=0:
                             minus_flag=True 
                             tmp_sum=0
                             break
