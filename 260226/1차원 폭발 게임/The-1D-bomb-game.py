@@ -1,42 +1,38 @@
-# 260226 (18:03)
-
 n, m = map(int, input().split())
 numbers = [int(input()) for _ in range(n)]
 
-if m==1:
-    print(0)
-else:
-    while True:
-        # 터질 폭탄이 더이상 없을 때 : break 
-            # m이상 연속된 길이의 숫자 없음 
-        bomb_flag=False
-        # 터질 폭탄 확인 
-        cnt=1
-        start_i=0
-        new_numbers=numbers.copy()
-        for n in range(1,len(numbers)):
-            if numbers[n]==numbers[n-1]:
-                cnt+=1
-                bomb_flag=True
-                # if cnt>=m: # 터질 폭탄들 
-                #     # start_i부터 현재까지의 폭탄들 제거 
-                #     # 바로 제거하면 안됨 => 끝까지 봐야함  
-                #     new_numbers=numbers[:start_i]+numbers[n+1:]
-                #     cnt=1
-                #     bomb_flag=True
-            else: #다를 때 이전 보기 
-                if bomb_flag and cnt>=m: # 터질 폭탄들 
-                    # start_i부터 현재까지의 폭탄들 제거 
-                    # 바로 제거하면 안됨 => 끝까지 봐야함  
-                    new_numbers=numbers[:start_i]+numbers[n:]
-                    cnt=1
-                
-                cnt=1 # 이전 폭탄이랑 숫자 다름 => cnt 1로 초기화 
-                start_i=n #시작 point 현재 num으로 update 
-        if not bomb_flag : break
-        numbers=new_numbers
-        # print(numbers)
+# Please write your code here.
 
-    print(len(numbers))
-    for i in numbers:
-        print(i)
+while True:
+    stack=[] # [값, 연속개수]
+    exploded=False 
+    for num in numbers:
+        if stack and stack[-1][0]==num:
+            stack[-1][1]+=1 #가장 위에있는 벽돌의 개수 하나 증가 
+        else:
+            # 새로운 벽돌 추가 
+            stack.append([num,1])
+        
+        # if stack[-1][1]>=m:
+        #     stack.pop()
+        #     exploded=True 
+    # stack => numbers 
+    # print(stack)
+    # temp=[]
+    # for num,cnt in stack:
+    #     temp.extend([num]*cnt)
+    # numbers=temp 
+    # print(numbers)
+    temp=[]
+    for num, cnt in stack:
+        if cnt < m :
+            temp.extend([num]*cnt)
+        else:
+            exploded=True 
+    numbers=temp
+    # print(numbers)
+    if not exploded : break 
+
+print(len(numbers))
+for num in numbers:
+    print(num)
