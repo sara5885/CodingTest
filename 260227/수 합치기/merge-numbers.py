@@ -1,14 +1,11 @@
+import heapq 
 n = int(input())
 arr = list(map(int, input().split()))
-
-arr.sort()
+heapq.heapify(arr)
 ans=0 
 while len(arr)>1:
-    arr.sort()
-    new_num=arr[0]+arr[1]
-    ans+=new_num
-    new_arr=arr[2:]
-    new_arr.append(new_num)
-    arr=new_arr
-
+    n1=heapq.heappop(arr)
+    n2=heapq.heappop(arr)
+    ans+=n1+n2 
+    heapq.heappush(arr, n1+n2)
 print(ans)
