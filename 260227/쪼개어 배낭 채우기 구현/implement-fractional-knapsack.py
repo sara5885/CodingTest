@@ -12,7 +12,8 @@ arr.sort(key=lambda x:-x[1])
 # print(arr)
 ans=0
 idx=0
-while M>0:
+for idx in range(N):
+    if M<=0: break
     num,weight=arr[idx]
     if M>=w[num]: #하나 다 하기 
         ans+=v[num]
@@ -21,8 +22,7 @@ while M>0:
         # 3남았는데 최대 무게가 4면 여기서 3만 넣기  (3/4)
         ans+=v[num]*M/w[num]
         M=0
-    if idx+1<N :
-        idx+=1 
+
 # print(round(ans,3))
 print(f"{ans:.3f}")
 
