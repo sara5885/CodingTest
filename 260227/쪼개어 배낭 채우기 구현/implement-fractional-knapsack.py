@@ -21,8 +21,8 @@ while M>0:
         # 3남았는데 최대 무게가 4면 여기서 3만 넣기  (3/4)
         ans+=v[num]*M/w[num]
         M=0
-    # print(ans, M)
-    idx+=1 
+    if idx+1<N :
+        idx+=1 
 # print(round(ans,3))
 print(f"{ans:.3f}")
 
