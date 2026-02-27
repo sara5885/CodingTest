@@ -17,7 +17,7 @@ else:
     for i in range(4,n+1):
         # dp[i]
         for j in range(i):
-            k=i-j
+            k=i-1-j
             dp[i]+=dp[j]*dp[k]
 
     print(dp[n])
