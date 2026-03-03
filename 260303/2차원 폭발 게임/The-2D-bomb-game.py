@@ -21,38 +21,38 @@ def bomb(arr,m):
     new_arr=copy.deepcopy(arr)
     
     # pointer 2개 쓰기 
-    # for j in range(n):
-    #     start=0 
-    #     end=0
-    #     for i in range(n):
-            
-    #         if arr[i][j]==arr[start][j]: 
-    #             end=i
-    #         else:
-    #             # 0이면 비어있는거라 X 
-    #             if arr[start][j]!=0 and end-start+1>=m:
-    #                 for idx in range(start, end+1):
-    #                     new_arr[idx][j]=0
-    #             start=i
-    #             end=i
-    #     if arr[start][j]!=0 and end-start+1>=m:
-    #         for idx in range(start,n):
-    #             new_arr[idx][j]=0
-
-    for j in range(n): 
+    for j in range(n):
         start=0 
-        end=0 
-        for i in range(n): 
+        end=0
+        for i in range(n):
+            
             if arr[i][j]==arr[start][j]: 
-                end=i 
-            else: 
-                if end-start+1>=m: 
-                    for idx in range(start, end+1): 
-                        new_arr[idx][j]=0 
-                start=i 
-        if i==n-1 and end-start+1>=m: 
+                end=i
+            else:
+                # 0이면 비어있는거라 X 
+                if arr[start][j]!=0 and end-start+1>=m:
+                    for idx in range(start, end+1):
+                        new_arr[idx][j]=0
+                start=i
+                end=i
+        if arr[start][j]!=0 and end-start+1>=m:
             for idx in range(start,n):
                 new_arr[idx][j]=0
+
+    # for j in range(n): 
+    #     start=0 
+    #     end=0 
+    #     for i in range(n): 
+    #         if arr[i][j]==arr[start][j]: 
+    #             end=i 
+    #         else: 
+    #             if end-start+1>=m: 
+    #                 for idx in range(start, end+1): 
+    #                     new_arr[idx][j]=0 
+    #             start=i 
+    #     if i==n-1 and end-start+1>=m: 
+    #         for idx in range(start,n):
+    #             new_arr[idx][j]=0
 
 
     # for i in new_arr:
