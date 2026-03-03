@@ -18,8 +18,8 @@ def drop(arr):
 
 def bomb(arr,m):
     # arr에서 m개 이상 같은 숫자 (column 기준) 있으면 터뜨려서 보내기 
-    new_arr=copy.deepcopy(arr)
-    
+    # new_arr=copy.deepcopy(arr)
+    new_arr = [row[:] for row in arr]
     # pointer 2개 쓰기 
     for j in range(n):
         start=0 
@@ -39,27 +39,6 @@ def bomb(arr,m):
             for idx in range(start,n):
                 new_arr[idx][j]=0
 
-    # for j in range(n): 
-    #     start=0 
-    #     end=0 
-    #     for i in range(n): 
-    #         if arr[i][j]==arr[start][j]: 
-    #             end=i 
-    #         else: 
-    #             if end-start+1>=m: 
-    #                 for idx in range(start, end+1): 
-    #                     new_arr[idx][j]=0 
-    #             start=i 
-    #     if i==n-1 and end-start+1>=m: 
-    #         for idx in range(start,n):
-    #             new_arr[idx][j]=0
-
-
-    # for i in new_arr:
-    #     for j in i:
-    #         print(j,end=" ")
-    #     print() 
-    # print("---------")
     return drop(new_arr)
 
 
