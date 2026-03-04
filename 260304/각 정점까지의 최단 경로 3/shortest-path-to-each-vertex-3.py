@@ -18,10 +18,13 @@ while pq:
     c_node, c_weight=heapq.heappop(pq)
     # c_node의 자식들 하나씩 dist update하기
     for n_node,n_weight in graph[c_node]:
+        if c_weight > dist[c_node]: continue
         tmp_dist=n_weight+c_weight #c_weight이랑 dist[c_node]랑 같으려나
         if dist[n_node]>tmp_dist:
             dist[n_node]=tmp_dist
             heapq.heappush(pq,(n_node,tmp_dist))
 
 for i in range(2,n+1):
-    print(dist[i])
+    if dist[i]==INT_MAX:
+        print(-1)
+    else: print(dist[i])
