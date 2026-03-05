@@ -11,7 +11,7 @@ dp=[[INT_MAX for _ in range(len(B)+1)] for _ in range(len(A)+1)]
     # i==j : dp[i][j]=dp[i-1][j-1]
     # i!=j : 삽입/삭제/변경 
 
-dp[0][0]=1
+dp[0][0]=0
 for i in range(1, len(A)+1):
     dp[i][0]=i
 for i in range(1,len(B)+1):
