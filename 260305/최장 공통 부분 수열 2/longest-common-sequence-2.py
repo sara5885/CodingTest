@@ -46,34 +46,14 @@ for i in range(1,len(A)):
 # print(arr)
 cnt = dp[-1][-1]
 
-# for row in dp:
-#     for col in row:
-#         print(col,end=" ")
-#     print()
 
-# for row in dp_loc:
-#     for r,c in row:
-#         print("(",r,c,")",end=" ")
-#     print()
-
-# for c in range(1,cnt+1):
-#     found=False 
-#     for i in range(len(A)):
-#         for j in range(len(B)):
-#             if dp[i][j]==c and A[i]==B[j]: 
-#                 print(i,j, dp[i][j], A[i],B[j] )
-#                 arr.append(A[i])
-#                 found=True 
-#                 break 
-#         if found : break 
-
-cx,cy = -1,-1 
-while cnt>0:
-    if dp[cx][cy]==cnt :
+cx,cy = len(A)-1, len(B)-1
+while cx!=-1 and cy!=-1 :
+    # if dp[cx][cy]==cnt :
+    if A[cx]==B[cy]:
         # print(cnt, dp[cx][cy])
         cnt-=1
         arr.append(A[cx])
-        cx,cy=dp_loc[cx][cy]
-arr.reverse()
-for a in arr:
-    print(a,end="")
+    cx,cy=dp_loc[cx][cy]
+for i in range(len(arr)-1,-1,-1):
+    print(arr[i],end="")
