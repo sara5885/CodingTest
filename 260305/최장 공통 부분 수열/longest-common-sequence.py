@@ -8,16 +8,18 @@ dp=[[0 for _ in range(len(B))] for _ in range(len(A))]
 # 1. 초기조건
 # dp[0][0] : 둘이 같으면 1 아니면 0
 # dp[0][j] : 둘이 같으면 1, 아니면 0 
-for i in range(len(A)):
+if A[0]==B[0]: dp[0][0]=1
+else: dp[0][0]=0
+for i in range(1,len(A)):
     if A[i]==B[0]:
         dp[i][0]=1
     else:
-        dp[i][0]=0 
-for i in range(len(B)):
+        dp[i][0]=dp[i-1][0]
+for i in range(1,len(B)):
     if B[i]==A[0]:
         dp[0][i]=1
     else:
-        dp[0][i]=0
+        dp[0][i]=dp[0][i-1]
 
 # for row in dp:
 #     for col in row:
