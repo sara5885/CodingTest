@@ -1,13 +1,3 @@
-N = int(input())
-x, y = map(int, input().split())
-
-grid = [["."] * (N + 1) for _ in range(N + 1)]
-for i in range(1, N + 1):
-    row = input()
-    for j in range(1, N + 1):
-        grid[i][j] = row[j - 1]
-
-# Please write your code here.
 import sys
 
 DIR_NUM = 4
