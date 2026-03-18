@@ -17,11 +17,11 @@ grid[x][y]=cnt
 wait=0
 while True :
     cnt+=1
-    if cnt>1 and (cx,cy)==(x,y): 
+    if cnt>N*N : #and (cx,cy)==(x,y): 
         cnt=-1 
         break
-    if wait>4 and (cx,cy)==(x,y):
-        cnt=-1
+    if wait > 4:
+        cnt=-1 
         break
     nx,ny = cx+dx[idx], cy+dy[idx]
     if not(1<=nx<=N and 1<=ny<=N) : 
@@ -36,6 +36,7 @@ while True :
     else : # 이 방향으로 이동 가능 
         # step2 
         # case 1
+        wait=0
         if idx ==0 : wx,wy = nx+1,ny
         elif idx ==1 : wx,wy=nx,ny+1
         elif idx ==2 : wx,wy =nx-1,ny 
