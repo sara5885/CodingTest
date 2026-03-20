@@ -16,7 +16,7 @@ for i in range(n):
 for num in move_nums:
     # print("num:",num)
     cx,cy = loc[num]
-    mx,my,mw,midx=-1,-1,0,-1
+    mx,my,mw=-1,-1,0
 
     for dx,dy in ((1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)):
         nx,ny = cx+dx, cy+dy 
@@ -27,7 +27,6 @@ for num in move_nums:
                 if grid[nx][ny][idx] > mw :
                     mw=grid[nx][ny][idx]
                     mx,my = nx,ny 
-                    midx=idx
         # else:
         #     print(nx,ny, n)
         # 가장 큰 값 있는 곳으로 이동
