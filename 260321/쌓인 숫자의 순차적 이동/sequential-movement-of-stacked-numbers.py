@@ -1,67 +1,88 @@
-# 260320 (18:17)
-from collections import deque 
-n, m = map(int, input().split())
-tmp_arr = [list(map(int, input().split())) for _ in range(n)]
-move_nums = list(map(int, input().split()))
-# union-find 
-parent=list(range(n*n+1))
-grid=[[[]for _ in range(n)] for _ in range(n)]
-# 해당 숫자가 현재 어느 좌표에 있는지 
-loc=dict()
-for i in range(n):
-    for j in range(n):
-        loc[tmp_arr[i][j]]=(i,j)
-        grid[i][j].append(tmp_arr[i][j])
+OUT_OF_GRID = (-1, -1)
 
-for num in move_nums:
-    # print("num:",num)
-    cx,cy = loc[num]
-    mx,my,mw=-1,-1,0
+# 변수 선언 및 입력:
+n, m = tuple(map(int, input().split()))
+grid = [
+    [[] for _ in range(n)]
+    for _ in range(n)
+]
 
-    for dx,dy in ((1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)):
-        nx,ny = cx+dx, cy+dy 
+
+def get_pos(move_num):
+    for i in range(n):
+        for j in range(n):
+            for num in grid[i][j]:
+                if num == move_num:
+                    return (i, j)
+
+
+def in_range(x, y):
+    return 0 <= x and x < n and 0 <= y and y < n
+
+
+# 그 다음 위치를 찾아 반환합니다.
+def next_pos(pos):
+    dxs = [-1, -1, -1,  0, 0,  1, 1, 1]
+    dys = [-1,  0,  1, -1, 1, -1, 0, 1]
+    
+    x, y = pos
+    
+    # 인접한 8개의 칸 중 가장 값이 큰 위치를 찾아 반환합니다.
+    max_val, max_pos = -1, OUT_OF_GRID
+    for dx, dy in zip(dxs, dys):
+        nx, ny = x + dx, y + dy
+        if in_range(nx, ny):
+            for num in grid[nx][ny]:
+                if num > max_val:
+                    max_val, max_pos = num, (nx, ny)
+    
+    return max_pos
+
+
+def move(pos, next_pos, move_num):
+    (x, y), (nx, ny) = pos, next_pos
+    
+    # Step1. (x, y) 위치에 있던 숫자들 중
+    # move_num 위에 있는 숫자들을 전부 옆 위치로 옮겨줍니다.
+    to_move = False
+    for num in grid[x][y]:
+        if num == move_num:
+            to_move = True
         
-        if 0<=nx<n and 0<=ny<n: # and grid[nx][ny]:
-            # for tmp in grid[nx][ny]:
-            for idx in range(len(grid[nx][ny])):
-                if grid[nx][ny][idx] > mw :
-                    mw=grid[nx][ny][idx]
-                    mx,my = nx,ny 
-        # else:
-        #     print(nx,ny, n)
-        # 가장 큰 값 있는 곳으로 이동
-    # 주변에 숫자 있을 때만 이동 
-    if (mx,my)!=(-1,-1):
-        # print(mx,my,cx,cy,midx, grid[cx][cy],mw )
-        # grid[cx][cy][midx:]
-        # grid[mx][my].append(num)
-        # midx가 아니고 원래 num의 위치 
-        n_idx=grid[cx][cy].index(num)
-        for tmp_n in grid[cx][cy][n_idx:]:
-            loc[tmp_n]=mx,my
-        grid[mx][my]+=grid[cx][cy][n_idx:]
-        # loc[num]=mx,my 
-        del grid[cx][cy][n_idx:]
-        # grid[cx][cy].remove(num)
+        if to_move:
+            grid[nx][ny].append(num)
+    
+    # Step2. (x, y) 위치에 있던 숫자들 중
+    # 움직인 숫자들을 전부 비워줍니다.
+    while grid[x][y][-1] != move_num:
+        grid[x][y].pop()
+    grid[x][y].pop()
 
-    # for row in grid:
-    #     for col in row:
-    #         print(col,end=" ")
-    #     print()
-    # print()
+
+def simulate(move_num):
+    # 그 다음으로 나아가야할 위치를 구해
+    # 해당 위치로 숫자들을 옮겨줍니다.
+    pos = get_pos(move_num)
+    max_pos = next_pos(pos)
+    if max_pos != OUT_OF_GRID:
+        move(pos, max_pos, move_num)
+
+
+for i in range(n):
+    given_row = list(map(int, input().split()))
+    for j, num in enumerate(given_row):
+        grid[i][j].append(num)
+
+# m번 시뮬레이션을 진행합니다.
+move_nums = list(map(int, input().split()))
+for move_num in move_nums:
+    simulate(move_num)
 
 for i in range(n):
     for j in range(n):
-        if len(grid[i][j])==0:
-            print("None")
+        if not grid[i][j]:
+            print("None", end="")
         else:
-            tmp=grid[i][j][::-1]
-            
-            for d in tmp:
-                print(d,end=" ")
-            print()
-
-# for row in grid:
-#     for col in row:
-#         print(col,end=" ")
-#     print()
+            for num in grid[i][j][::-1]:
+                print(num, end=" ")
+        print()
