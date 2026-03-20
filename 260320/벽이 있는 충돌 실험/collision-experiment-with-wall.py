@@ -27,16 +27,28 @@ for _ in range(T):
                 if grid[i][j]!=0:
                     dx,dy = dir[grid[i][j]]
                     nx,ny=i+dx,j+dy 
-                    # out of range면 방향 바꾸기 
+                    # out of range면 방향 바꾸기 -> 이 때도 확인헤야함 
                     if not (0<=nx<N and 0<=ny<N): 
                         if grid[i][j]=='U':
-                            new_grid[i][j]='D'
+                            if new_grid[i][j] or (i,j) in bombed_set:
+                                new_grid[i][j]=0
+                            else:
+                                new_grid[i][j]='D'
                         if grid[i][j]=='D':
-                            new_grid[i][j]='U'
+                            if new_grid[i][j] or (i,j) in bombed_set:
+                                new_grid[i][j]=0
+                            else:
+                                new_grid[i][j]='U'
                         if grid[i][j]=='R':
-                            new_grid[i][j]='L'
+                            if new_grid[i][j] or (i,j) in bombed_set:
+                                new_grid[i][j]=0
+                            else:
+                                new_grid[i][j]='L'
                         if grid[i][j]=='L':
-                            new_grid[i][j]='R'
+                            if new_grid[i][j] or (i,j) in bombed_set:
+                                new_grid[i][j]=0
+                            else:
+                                new_grid[i][j]='R'
                     # 아니면 한칸 이동핟기 
                     else:
                         #new_grid확인하기
