@@ -31,21 +31,25 @@ for _ in range(T):
                     if not (0<=nx<N and 0<=ny<N): 
                         if grid[i][j]=='U':
                             if new_grid[i][j] or (i,j) in bombed_set:
+                                bombed_set.add((i,j))
                                 new_grid[i][j]=0
                             else:
                                 new_grid[i][j]='D'
                         if grid[i][j]=='D':
                             if new_grid[i][j] or (i,j) in bombed_set:
+                                bombed_set.add((i,j))
                                 new_grid[i][j]=0
                             else:
                                 new_grid[i][j]='U'
                         if grid[i][j]=='R':
                             if new_grid[i][j] or (i,j) in bombed_set:
+                                bombed_set.add((i,j))
                                 new_grid[i][j]=0
                             else:
                                 new_grid[i][j]='L'
                         if grid[i][j]=='L':
                             if new_grid[i][j] or (i,j) in bombed_set:
+                                bombed_set.add((i,j))
                                 new_grid[i][j]=0
                             else:
                                 new_grid[i][j]='R'
