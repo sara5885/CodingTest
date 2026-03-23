@@ -16,8 +16,7 @@ for _ in range(T):
     final_collision = -1
 
     for i in range(1, 4001):
-        next_grid_cells = []  # 이번 스텝에서 grid에 쓴 셀 기록
-
+        
         for j in range(len(jewels)):
             cx, cy, cidx, cw, cdir = jewels[j]
             if cx == INT_MAX:
@@ -45,7 +44,7 @@ for _ in range(T):
                     jewels[oidx][1] = INT_MAX
                     grid[nx][ny] = cidx
                     jewels[j] = [nx, ny, cidx, cw, cdir]
-                    next_grid_cells.append((nx, ny))
+                    
                 else:
                     # 기존 구슬 승리, 현재 구슬 제거
                     jewels[j][0] = INT_MAX
@@ -53,7 +52,7 @@ for _ in range(T):
             else:
                 grid[nx][ny] = cidx
                 jewels[j] = [nx, ny, cidx, cw, cdir]
-                next_grid_cells.append((nx, ny))
+              
 
     print(final_collision)
 
