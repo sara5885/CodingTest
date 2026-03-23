@@ -3,14 +3,6 @@ T = int(input())
 
 dir={'R':(1,0),'L':(-1,0),'U':(0,1),'D':(0,-1)}
 
-def can_collide(j1, j2):
-    x1,y1,w1,d1,i1 = j1
-    x2,y2,w2,d2,i2 = j2
-    if d1 == d2:
-        return False
-    dx1,dy1 = dir[d1]
-    dx2,dy2 = dir[d2]
-    return (x2-x1)*(dx1-dx2) + (y2-y1)*(dy1-dy2) > 0
 
 for _ in range(T):
     N = int(input())
@@ -28,9 +20,7 @@ for _ in range(T):
     last_collision=-1
     while True:
         # 종료조건
-        if not any(can_collide(j1,j2) for i,j1 in enumerate(jewels) for j2 in jewels[i+1:]):
-            break
-
+        
         cnt+=1
         new_jewels=[]
         while jewels:
@@ -41,6 +31,7 @@ for _ in range(T):
         
         collision={}
         collision_pos=set()
+        will_collide = False
         for i in range(len(new_jewels)):
             for j in range(i+1,len(new_jewels)):
                 ix,iy,iw,id,ii=new_jewels[i]
@@ -51,7 +42,14 @@ for _ in range(T):
                     collision[(ix,iy)].add((iw,ii,id))
                     collision[(ix,iy)].add((jw,ji,jd))
                     collision_pos.add((ix,iy))
-
+                else:
+                    # 나중에 만날 가능성 체크
+                    dx1,dy1 = dir[id]
+                    dx2,dy2 = dir[jd]
+                    if (jx-ix)*(dx1-dx2) + (jy-iy)*(dy1-dy2) > 0:
+                        will_collide = True
+        if not will_collide and not collision:
+            break
         if collision:
             last_collision=cnt
 
