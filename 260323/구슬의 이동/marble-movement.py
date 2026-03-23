@@ -79,7 +79,7 @@ for t in range(T):
                 tr=(tr+tv)%(n-1)
 
         new_grid[tr][tc].append((tv,ti,td))
-        if len(new_grid[tr][tc])>=k:
+        if len(new_grid[tr][tc])>k:
             need_to_remove.add((tr,tc))
         new_jewels.append([tr,tc,tv,ti,td])
        
