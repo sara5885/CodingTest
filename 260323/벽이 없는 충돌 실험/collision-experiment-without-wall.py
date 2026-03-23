@@ -5,16 +5,16 @@ T = int(input())
 dir={'U':(0,1),'D':(0,-1), 'L':(-1,0),'R':(1,0)}
 for _ in range(T):
     N = int(input())
-    x, y, w, d = [], [], [], []
+    # x, y, w, d = [], [], [], []
     jewels=[[] for _ in range(N)] #[x,y,index,power,direction]
     grid=[[-1 for _ in range(4001)] for _ in range(4001)] # 4001로 해도 됨. 어차피 그 이상이면 out of index
 
     for i in range(N):
         xi, yi, wi, di = input().split()
-        x.append(2*int(xi)+2000)
-        y.append(2*int(yi)+2000)
-        w.append(int(wi))
-        d.append(di)
+        # x.append(2*int(xi)+2000)
+        # y.append(2*int(yi)+2000)
+        # w.append(int(wi))
+        # d.append(di)
         jewels[i]=[2*int(xi)+2000, 2*int(yi)+2000, i, int(wi), di]
 
     # x[],y[],w[],d[]는 idx에 의해 
