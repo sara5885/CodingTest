@@ -24,6 +24,8 @@ for i in range(m):
     #우선순위로 밑에 구슬삭제 : 우선순위(속도, 번호)
 
 # t마다 새로운 grid로 update
+dir={'R':(0,1),'L':(0,-1),'U':(-1,0),'D':(1,0)}
+opp={'R':'L','L':'R','U':'D','D':'U'}
 for t in range(T):
     
     # print("[",t,"s]")
@@ -35,49 +37,17 @@ for t in range(T):
     while jewels:
         jewel=jewels.pop()
         tr,tc,tv,ti,td = jewel
-        
-        if td == 'R':
-            tmp=(tc+tv)//(n-1)
-            if tmp%2!=0:
-                td='L'
-                tc=(n-1)-((tc+tv)%(n-1))
+        cx,cy = tr,tc 
+        for _ in range(tv):
+            dx,dy = dir[td]
+            nx,ny=cx+dx, cy+dy 
+            if 0<=nx<n and 0<=ny<n :
+                cx,cy=nx,ny 
             else:
-                tc=(tc+tv)%(n-1)
-
-        elif td=='L':
-            # 핑퐁없이 그대로 tc에서 빼기 
-            if tc>=tv:
-                tc=tc-tv 
-            # tv가 더 커서 핑퐁함 
-            else:  
-                tmp=(tc-tv)//(n-1)
-                if tmp%2!=0:
-                    td='R'
-                tmp2=(tv-tc)%(n-1)
-                if td=='R':
-                    tc=tmp2
-                else:
-                    tc=(n-1)-tmp2
-        elif td=='U':
-            if tr>=tv:
-                tr=tr-tv
-            else:
-                tmp=(tv-tr)//(n-1)
-                if tmp%2!=0:
-                    td='U'
-                tmp2=(tv-tr)%(n-1)
-                if td=='U':
-                    tr=tmp2
-                else:
-                    tr=(n-1)-tmp2 
-        elif td=='D':
-            tmp=(tr+tv)//(n-1)
-            if tmp%2!=0:
-                td='U'
-                tr=(n-1)-((tr+tv)%(n-1))
-            else:
-                tr=(tr+tv)%(n-1)
-
+                nx,ny=cx-dx, cy-dy 
+                td=opp[td]
+                cx,cy=nx,ny 
+        tr,tc=cx,cy 
         new_grid[tr][tc].append((tv,ti,td))
         if len(new_grid[tr][tc])>k:
             need_to_remove.add((tr,tc))
