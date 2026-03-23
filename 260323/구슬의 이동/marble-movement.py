@@ -110,6 +110,7 @@ for t in range(T):
     #         print(col,end=" ")
     #     print()
     # print()
+    need_to_remove=set()
     jewels=new_jewels 
     grid=new_grid
 
