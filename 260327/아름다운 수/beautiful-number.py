@@ -1,7 +1,9 @@
-n = int(input())
 
-answer=[]
-cnt=0
+n = int(input())
+# answer=[]
+answer=list()
+ans=0
+
 def check(): #여기가 핵심 
     # 4가지 수 
     idx=0
@@ -13,22 +15,22 @@ def check(): #여기가 핵심
         for j in range(idx,idx+answer[idx]):
             if answer[idx]!=answer[j]:
                 return False 
+
         idx+=answer[idx] #해당 거리만큼 idx에서 점프 
     # print(*answer)
     return True 
 
 
-def choose(idx):
-    global cnt 
-    if idx==n+1:
+def choose(cnt):
+    global ans
+    if cnt==n:
         if check():
-            cnt+=1 
+            ans+=1 
         return 
     for i in range(1,5):
         answer.append(i)
-        choose(idx+1)
+        choose(cnt+1)
         answer.pop()
 
-
-choose(1)
-print(cnt)
+choose(0)
+print(ans)
